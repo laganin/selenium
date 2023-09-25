@@ -1,4 +1,4 @@
-package p2209_2023;
+package p22_09_2023;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
