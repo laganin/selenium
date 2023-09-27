@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Zadatak2 {
 
@@ -39,27 +40,18 @@ public class Zadatak2 {
         todo.add("Visit New York");
         todo.add("Visit Belgrade");
 
-        //*[@class='todo-list']//button
-
         driver.navigate().to("https://example.cypress.io/todo");
-        Thread.sleep(2000);
-        driver.findElement(By.cssSelector(".todo-list>li")).click();
-        Thread.sleep(2000);
-        driver.findElement(By.className("destroy")).click();
-        Thread.sleep(2000);
-        driver.findElement(By.cssSelector(".todo-list>li")).click();
-        Thread.sleep(2000);
-        driver.findElement(By.className("destroy")).click();
+
         for (int i = 0; i < todo.size(); i++) {
             driver.findElement(By.className("new-todo")).sendKeys(todo.get(i));
             driver.findElement(By.className("new-todo")).sendKeys(Keys.ENTER);
             Thread.sleep(2000);
         }
 
-        for (int i = 0; i < todo.size(); i++) {
-            driver.findElement(By.cssSelector(".todo-list>li")).click();
-            Thread.sleep(2000);
-            driver.findElement(By.className("destroy")).click();
+        List<WebElement> todoList = driver.findElements(By.className("toggle"));
+
+        for (int i = 0; i < todoList.size(); i++) {
+            todoList.get(i).click();
         }
         Thread.sleep(5000);
         driver.quit();
