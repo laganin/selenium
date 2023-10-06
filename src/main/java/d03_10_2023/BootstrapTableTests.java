@@ -65,6 +65,10 @@ public class BootstrapTableTests {
     private WebDriver driver;
     private WebDriverWait wait;
 
+    String firstName = "Dragan";
+    String lastName = "Torbica";
+    String middleName = "Jove";
+
 
     @BeforeClass
     public void setup() {
@@ -74,9 +78,6 @@ public class BootstrapTableTests {
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        String firstName = "Dragan";
-        String lastName = "Torbica";
-        String middleName = "Jove";
     }
 
     @BeforeMethod
@@ -90,10 +91,6 @@ public class BootstrapTableTests {
 
     @Test
     public void editRow() {
-        String firstName = "Dragan";
-        String lastName = "Torbica";
-        String middleName = "Jove";
-
         driver.findElement(By.cssSelector("tr:nth-child(1) button.update")).click();
 
         wait
@@ -133,10 +130,6 @@ public class BootstrapTableTests {
 
     @Test
     public void deleteRow() {
-        String firstName = "Dragan";
-        String lastName = "Torbica";
-        String middleName = "Jove";
-
         List<WebElement> cells = driver.findElements(By.cssSelector("tbody tr td"));
 
         driver.findElement(By.cssSelector("tr:nth-child(1) button.delete")).click();
@@ -153,7 +146,7 @@ public class BootstrapTableTests {
 
         wait
                 .withMessage("Number of table rows has not changed.")
-                .until(ExpectedConditions.numberOfElementsToBe(By.cssSelector("tbody tr td"), cells.size()-6));
+                .until(ExpectedConditions.numberOfElementsToBe(By.cssSelector("tbody tr td"), cells.size() - 6));
     }
 
     @Test
